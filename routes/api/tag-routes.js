@@ -2,32 +2,61 @@ const router = require('express').Router();
 const { Tag, Product, ProductTag } = require('../../models');
 
 // The `/api/tags` endpoint
-router.get('/', async (req, res) => {
-  // find all categories
 
-  try {
-    // find all tags
-    const tagData = await Tag.findAll({
+router.get('/', (req, res) => {
+  // find all tags
+  Tag.findAll({
+
     // be sure to include its associated Product data
     include: [
       {
         model: Product,
-        through: ProductTag
-      }]
+        attributes: ["id", "product_name", "price", "stock", "category_id"],
+        through: ProductTag,
+        as: "products",
+      },
+    ],
   })
-  if (!tagData) {
-    res.json({"message": "There's no category data!!"})
-  }
-  res.json(tagData)
-} catch (error) {
-  console.log(error)
-}
-})
-
+    .then((data) => {
+      if (!data) {
+        res.status(404)
+        return;
+      }
+      res.json(data);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
 
 router.get('/:id', (req, res) => {
   // find a single tag by its `id`
-  // be sure to include its associated Product data
+  Tag.findOne({
+    where: {
+      id: req.params.id,
+    },
+
+    // be sure to include its associated Product data
+    include: [
+      {
+        model: Product,
+        attributes: ["id", "product_name", "price", "stock", "category_id"],
+        through: ProductTag,
+        as: "products",
+      },
+    ],
+  })
+    .then((data) => {
+      if (!data) {
+        res.status(404).json({ Alert: "Error 404: ID not found." });
+        return;
+      }
+      res.json(data);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 router.post('/', (req, res) => {
