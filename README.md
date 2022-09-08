@@ -29,10 +29,13 @@ Applications used in this project were:
   This project is covered under the MIT license.
 
   ## Demo-Video
-  A demo for this can be found here ()
+  A demo for this can be found here (https://drive.google.com/file/d/1CDVj-RSVidpNKae_c-T5NX7HCFYFZFBG/view)
 
     Example of the integrated terminal
    ![Image of integrated terminal]()
+
+    Example of the Insomnia terminal
+   ![Image of integrated insomnia]()
 
   ## Questions
   Please reach out to me at the below with any questions:
