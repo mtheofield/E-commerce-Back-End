@@ -32,10 +32,10 @@ Applications used in this project were:
   A demo for this can be found here (https://drive.google.com/file/d/1CDVj-RSVidpNKae_c-T5NX7HCFYFZFBG/view)
 
     Example of the integrated terminal
-   ![Image of integrated terminal]()
+   ![Image of integrated terminal](img/terminal.png)
 
-    Example of the Insomnia terminal
-   ![Image of integrated insomnia]()
+    Example of the Insomnia 
+   ![Image of integrated insomnia](img/insomnia.png)
 
   ## Questions
   Please reach out to me at the below with any questions:
